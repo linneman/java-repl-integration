@@ -24,8 +24,8 @@
   (println "staring clojure repl ...")
   (nrepl-server/start-server :port port :handler cider-nrepl-handler)
   (println "clojure repl server cider is running")
-  (println "connect to hostname:"
-           (.getCanonicalHostName (java.net.InetAddress/getLocalHost))
+  (println "connect to IP ADDR ATM:"
+           ;; (.getCanonicalHostName (java.net.InetAddress/getLocalHost))
            ", port:" port))
 
 

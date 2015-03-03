@@ -36,6 +36,7 @@
         <attribute name="Created-By" value="OL" />
         <attribute name="Package-Title" value="Clojure REPL Integration"/>
         <attribute name="Main-Class" value="${main-class}"/>
+        <attribute name="Class-Path" value="cljrepl-1.0.0-SNAPSHOT-standalone.jar"/>
       </manifest>
     </jar>
   </target>
