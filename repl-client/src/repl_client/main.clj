@@ -54,11 +54,13 @@
                    doall)
                (catch java.net.SocketException e
                  (do
-                   (log/error "connection to socket server interrupted!")
+                   (log/error "connection to remote nrepl server lost!")
                    (reset! repl-conn nil)
                    error-resp)))]
-    ; (log/info "-> " resp)
-    (transform-repl-resp resp)))
+    ; (log/info "remote-eval!-> " resp)
+    (if resp
+      (transform-repl-resp resp)
+      "error: connection to remote nrepl server lost!")))
 
 
 (defn remote-repl
@@ -72,10 +74,12 @@
       (let [exp (read-line)]
         (if (= exp quit-cmd) (reset! exit-request true))
         (if (empty? exp) (Thread/sleep 100)
-            (let [req-agent (agent "no connection to nrepl server error!")
+            (let [req-agent (agent nil)
                   resp (send-off req-agent remote-eval! host port exp)]
               (await-for 3000 req-agent)
-              (println @req-agent)))
+              (if @req-agent
+                (println @req-agent)
+                (println "error: no connection to remote nrepl server!"))))
         (when-not @exit-request (recur))))))
 
 
