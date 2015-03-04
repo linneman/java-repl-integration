@@ -77,9 +77,8 @@ automation since the JVM does not have to be restarted for each injection.
 The nrepl client is implemented in Clojure well and uses the very same build system Leingingen.
 Here is how to use it:
 
-* inside a shell make 'repl-client' your current directory
-* build and run a standalone application with the commands
-
+Inside a shell make 'repl-client' your current directory and build and run a standalone application
+with the commands:
 
     $ lein uberjar
     $ java -jar target/repl-client-1.0.0-SNAPSHOT-standalone.jar -l <port>
@@ -88,8 +87,7 @@ or do both in one step with the leiningen command
 
     $ lein trampoline run -l <port>
 
-* The above commands start the repl-client in server mode
-* Afterwords you can connect to this server via [telnet](http://en.m.wikipedia.org/wiki/Telnet),
+The above commands start the repl-client in server mode. Afterwords you can connect to this server via [telnet](http://en.m.wikipedia.org/wiki/Telnet),
 [socat](http://www.dest-unreach.org/socat/), [netcat](http://en.m.wikipedia.org/wiki/Socat#Variants)
 or any other network utility.
 
